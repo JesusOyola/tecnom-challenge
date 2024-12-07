@@ -1,0 +1,66 @@
+.header-line {
+  width: 95%;
+  height: 2px;
+  background-color: #adb5bd;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  border-radius: 1px;
+}
+
+.btn-pink {
+  background: linear-gradient(
+    90deg,
+    rgba(199, 6, 21, 1) 70%,
+    rgba(255, 51, 153, 1) 80%
+  );
+  border-radius: 20px;
+  border: none;
+}
+
+.btn-pink:hover {
+  background: linear-gradient(90deg, #e6006b, #e62e8a);
+}
+
+.btn-link-info{
+    display: flex;
+    
+    border-radius: 20px;
+}
+.btn-whatsapp{
+    border-color: #25d366;
+}
+.btn-map{
+    border-color: #cbc9c9;
+}
+.whatsapp-icon {
+    color: #25d366;
+    padding-right: 5px; 
+  }
+.map-icon{
+    height: 23px;
+    width: 23px;
+}
+
+textarea::placeholder {
+  color: #adb5bd;
+}
+.border-rate-selected {
+  border-radius: 4px;
+}
+
+.rate-selected {
+  background-color: rgb(20, 172, 243);
+  color: white;
+}
+
+.rate-container {
+  width: 90px;
+}
+
+.secondary-contacts{
+    color: rgb(16, 128, 181);
+}
+
+.contact-text{
+    padding-left: 20px;
+}

@@ -1,1 +1,147 @@
-<h1>holaaa</h1>
+<div class="container py-5">
+ 
+  <div class="text-center mb-4">
+    <h6 class="text-muted">TALLER MOTORS</h6>
+    <div class="header-line mx-auto"></div>
+  </div>
+
+
+  <div class="text-center mb-4">
+    <p>Hola Nicolás, gracias por confiar en nosotros.</p>
+  </div>
+
+  
+  <div class="text-center mb-4">
+    <h5>¿Cómo calificaría su experiencia con nuestro servicio?</h5>
+  </div>
+
+ 
+  <div class="d-flex justify-content-center mb-3 gap-4">
+    <div class="text-center rate-container">
+      <button
+        type="button"
+        class="btn border-rate-selected"
+        [ngClass]="{
+          'rate-selected': rating === 1,
+          'btn-outline-secondary': rating !== 1
+        }"
+        (click)="setRating(1)"
+      >
+        1
+      </button>
+      <div *ngIf="rating === 1" class="text-muted mt-2">{{ ratingText }}</div>
+    </div>
+
+    <div class="text-center rate-container">
+      <button
+        type="button"
+        class="btn border-rate-selected"
+        [ngClass]="{
+          'rate-selected': rating === 2,
+          'btn-outline-secondary': rating !== 2
+        }"
+        (click)="setRating(2)"
+      >
+        2
+      </button>
+      <div *ngIf="rating === 2" class="text-muted mt-2">{{ ratingText }}</div>
+    </div>
+
+    <div class="text-center rate-container">
+      <button
+        type="button"
+        class="btn border-rate-selected"
+        [ngClass]="{
+          'rate-selected': rating === 3,
+          'btn-outline-secondary': rating !== 3
+        }"
+        (click)="setRating(3)"
+      >
+        3
+      </button>
+      <div *ngIf="rating === 3" class="text-muted mt-2">{{ ratingText }}</div>
+    </div>
+
+    <div class="text-center rate-container">
+      <button
+        type="button"
+        class="btn border-rate-selected"
+        [ngClass]="{
+          'rate-selected': rating === 4,
+          'btn-outline-secondary': rating !== 4
+        }"
+        (click)="setRating(4)"
+      >
+        4
+      </button>
+      <div *ngIf="rating === 4" class="text-muted mt-2">{{ ratingText }}</div>
+    </div>
+
+    <div class="text-center rate-container">
+      <button
+        type="button"
+        class="btn border-rate-selected"
+        [ngClass]="{
+          'rate-selected': rating === 5,
+          'btn-outline-secondary': rating !== 5
+        }"
+        (click)="setRating(5)"
+      >
+        5
+      </button>
+      <div *ngIf="rating === 5" class="text-muted mt-2">{{ ratingText }}</div>
+    </div>
+  </div>
+
+  
+  <div class="mb-4">
+    <textarea
+      class="form-control"
+      rows="4"
+      placeholder="Contanos tu experiencia"
+      [(ngModel)]="feedback"
+    ></textarea>
+  </div>
+
+  
+  <div class="d-grid mb-4">
+    <button
+      type="button"
+      class="btn btn-pink text-white fw-bold"
+      (click)="submitFeedback()"
+    >
+      ENVIAR
+    </button>
+  </div>
+
+  
+  <div class="text-center">
+    <h6 class="mb-1">Taller Motors</h6>
+    <p class="text-muted">Av. San Martín 1478</p>
+  </div>
+
+  
+  <div class="d-flex justify-content-center gap-3 mb-3 ">
+    <button type="button" class="btn btn-link-info btn-whatsapp"><i class="bi bi-whatsapp whatsapp-icon"></i> Whatsapp</button>
+    <button type="button" class="btn btn-map btn-link-info"><img src="assets/icon/maps.png" class="map-icon" alt="">Ver en mapa</button>
+   
+  </div>
+
+  
+  <div class="text-center">
+    <p class="mb-1"><img src="assets/icon/phone.png" class="map-icon" alt=""> <span class="contact-text">(+54) 123 4567500</span> </p>
+    <p><i class="bi bi-envelope secondary-contacts"></i> <span class="contact-text">info&#64;tallermotors.com.ar</span> </p>
+  </div>
+
+
+  <div class="container">
+    <h2>{{ workshop?.name }}</h2>
+    <p>{{ workshop?.address }}</p>
+    <p>{{ workshop?.email }}</p>
+    <p>{{ workshop?.whatsapp }}</p>
+  
+    <h3>{{ surveyConfig?.question }}</h3>
+    <p>{{ surveyConfig?.description }}</p>
+  </div>
+  
+</div>
