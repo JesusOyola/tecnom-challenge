@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-boxes',
   standalone: true,
-  imports: [CommonModule, FormsModule,HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './boxes.component.html',
   styleUrl: './boxes.component.scss',
 })
@@ -16,19 +16,22 @@ export default class BoxesComponent {
   firstWorkshop: any;
   rating: number = 0;
   feedback: string = '';
-  workshop: any;
-  surveyConfig: any;
+  workshop: any = {};
+  surveyConfig: any = {};
+  texts = [];
+  locationData: string = '';
 
   ngOnInit(): void {
     this.loadWorkshopData();
     this.loadSurveyConfig();
   }
-  
+
   loadWorkshopData(): void {
     this.boxesService.getFirstWorkshop().subscribe(
       (data) => {
         this.workshop = data;
-        console.log('Taller:', this.workshop);
+        this.locationData = data.address;
+        //console.log('Taller:', this.workshop);
       },
       (error) => {
         console.error('Error al cargar el taller:', error);
@@ -36,12 +39,13 @@ export default class BoxesComponent {
     );
   }
 
-  
   loadSurveyConfig(): void {
     this.boxesService.getSurveyConfig().subscribe(
       (data) => {
         this.surveyConfig = data;
-        console.log('Configuración de encuesta:', this.surveyConfig);
+        this.ratingText(data.mapping);
+
+        //console.log('Configuración de encuesta:', this.surveyConfig);
       },
       (error) => {
         console.error(
@@ -52,24 +56,29 @@ export default class BoxesComponent {
     );
   }
 
-  get ratingText(): string {
-    const texts = [
-      'nada satisfecho',
-      'Insatisfecho',
-      'Indiferente',
-      'Satisfecho',
-      'muy satisfecho',
-    ];
-    return texts[this.rating - 1];
+  ratingText(scoresObject: any): void {
+    if (scoresObject && typeof scoresObject === 'object') {
+      this.texts = Object.values(scoresObject);
+      //console.log('Texts cargados:', this.texts);
+    } else {
+      console.error('El objeto de puntajes no es válido:', scoresObject);
+    }
   }
 
   setRating(value: number): void {
     this.rating = value;
   }
 
+  openGoogleMaps(): void {
+    const locationParseData = JSON.parse(this.locationData);
+    const { lat, lng } = locationParseData.geometry.location;
+    const googleMapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
+    window.open(googleMapsUrl, '_blank');
+  }
+
   submitFeedback(): void {
-    console.log('Calificación:', this.rating);
-    console.log('Comentarios:', this.feedback);
+    //console.log('Calificación:', this.rating);
+    //console.log('Comentarios:', this.feedback);
     alert('¡Gracias por tu feedback!');
   }
 }
