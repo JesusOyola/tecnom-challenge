@@ -20,7 +20,7 @@ export default class BoxesComponent {
   surveyConfig: any = {};
   texts = [];
   locationData: string = '';
-  phoneNumber = '541153450014';
+  phoneNumber = '541134675692';
 
   ngOnInit(): void {
     this.loadWorkshopData();
@@ -32,7 +32,7 @@ export default class BoxesComponent {
       (data) => {
         this.workshop = data;
         this.locationData = data.address;
-        //console.log('Taller:', this.workshop);
+        console.log('Taller:', this.workshop);
       },
       (error) => {
         console.error('Error al cargar el taller:', error);
