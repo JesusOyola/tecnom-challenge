@@ -4,6 +4,15 @@
     <div class="header-line mx-auto"></div>
   </div>
 
+  @if(showThanksMessage){
+  <div class="thanks-text-container">
+    <h4 class="thanks-text">
+      ¡Gracias por compartir sus comentarios con nosotros!
+    </h4>
+    <a class="mt-5" href="/boxes">Volver a calificarnos</a>
+  </div>
+  } @if(!showThanksMessage){
+
   <div class="text-center mb-4">
     <p>Hola Nicolás, gracias por confiar en nosotros.</p>
   </div>
@@ -25,7 +34,9 @@
       >
         1
       </button>
-      <div *ngIf="rating === 1" class="text-muted mt-2">{{ texts[0] }}</div>
+      @if(rating === 1){
+      <div  class="text-muted mt-2">{{ texts[0] }}</div>
+      }
     </div>
 
     <div class="text-center rate-container">
@@ -40,7 +51,9 @@
       >
         2
       </button>
-      <div *ngIf="rating === 2" class="text-muted mt-2">{{ texts[1] }}</div>
+      @if(rating === 2){
+      <div  class="text-muted mt-2">{{ texts[1] }}</div>
+      }
     </div>
 
     <div class="text-center rate-container">
@@ -55,7 +68,9 @@
       >
         3
       </button>
-      <div *ngIf="rating === 3" class="text-muted mt-2">{{ texts[2] }}</div>
+      @if(rating === 3){
+      <div  class="text-muted mt-2">{{ texts[2] }}</div>
+      }
     </div>
 
     <div class="text-center rate-container">
@@ -70,7 +85,9 @@
       >
         4
       </button>
-      <div *ngIf="rating === 4" class="text-muted mt-2">{{ texts[3] }}</div>
+      @if(rating === 4){
+      <div  class="text-muted mt-2">{{ texts[3] }}</div>
+      }
     </div>
 
     <div class="text-center rate-container">
@@ -85,28 +102,36 @@
       >
         5
       </button>
-      <div *ngIf="rating === 5" class="text-muted mt-2">{{ texts[4] }}</div>
+      @if(rating === 5){
+      <div  class="text-muted mt-2">{{ texts[4] }}</div>
+      }
     </div>
   </div>
 
-  <div class="mb-4">
+  <div [ngClass]="{ 'mb-4': rating !== 0, 'no-text-spacing': rating == 0 }">
+    @if(rating !== 0){
     <textarea
-      class="form-control"
+      class="form-control no-resize"
+      maxlength="500"
       rows="4"
       placeholder="Contanos tu experiencia"
       [(ngModel)]="feedback"
     ></textarea>
+    }
   </div>
 
   <div class="d-grid mb-4">
     <button
       type="button"
-      class="btn btn-pink text-white fw-bold"
+      class="btn text-white fw-bold"
+      [ngClass]="{ 'btn-pink': rating !== 0, 'btn-disabled': rating == 0 }"
       (click)="submitFeedback()"
+      [disabled]="rating == 0"
     >
-      ENVIAR
+      <span [ngClass]="{ 'btn-disabled-text': rating == 0 }">ENVIAR</span>
     </button>
   </div>
+  }
 
   <div class="text-center">
     <h6 class="mb-1">{{ workshop.name }}</h6>
@@ -114,7 +139,11 @@
   </div>
 
   <div class="d-flex justify-content-center gap-3 mb-3">
-    <button type="button" class="btn btn-link-info btn-whatsapp" (click)="openWhatsApp()">
+    <button
+      type="button"
+      class="btn btn-link-info btn-whatsapp"
+      (click)="openWhatsApp()"
+    >
       <i class="bi bi-whatsapp whatsapp-icon"></i> Whatsapp
     </button>
     <button

@@ -21,6 +21,7 @@ export default class BoxesComponent {
   texts = [];
   locationData: string = '';
   phoneNumber = '541134675692';
+  showThanksMessage:boolean = false;
 
   ngOnInit(): void {
     this.loadWorkshopData();
@@ -46,7 +47,7 @@ export default class BoxesComponent {
         this.surveyConfig = data;
         this.ratingText(data.mapping);
 
-        //console.log('Configuración de encuesta:', this.surveyConfig);
+        console.log('Configuración de encuesta:', this.surveyConfig);
       },
       (error) => {
         console.error(
@@ -83,8 +84,9 @@ export default class BoxesComponent {
   }
 
   submitFeedback(): void {
-    //console.log('Calificación:', this.rating);
-    //console.log('Comentarios:', this.feedback);
+    console.log('Calificación:', this.rating);
+    console.log('Comentarios:', this.feedback);
+    this.showThanksMessage = true;
     alert('¡Gracias por tu feedback!');
   }
 }

@@ -16,29 +16,41 @@
   border-radius: 20px;
   border: none;
 }
+.btn-disabled {
+  background: linear-gradient(
+    90deg,
+    rgba(207, 207, 207, 1) 47%,
+    rgba(213, 218, 219, 1) 70%
+  );
+  border-radius: 20px;
+  border: none;
+}
+.btn-disabled-text {
+  color: grey;
+}
 
 .btn-pink:hover {
   background: linear-gradient(90deg, #e6006b, #e62e8a);
 }
 
-.btn-link-info{
-    display: flex;
-    
-    border-radius: 20px;
+.btn-link-info {
+  display: flex;
+
+  border-radius: 20px;
 }
-.btn-whatsapp{
-    border-color: #25d366;
+.btn-whatsapp {
+  border-color: #25d366;
 }
-.btn-map{
-    border-color: #cbc9c9;
+.btn-map {
+  border-color: #cbc9c9;
 }
 .whatsapp-icon {
-    color: #25d366;
-    padding-right: 5px; 
-  }
-.map-icon{
-    height: 23px;
-    width: 23px;
+  color: #25d366;
+  padding-right: 5px;
+}
+.map-icon {
+  height: 23px;
+  width: 23px;
 }
 
 textarea::placeholder {
@@ -57,10 +69,32 @@ textarea::placeholder {
   width: 90px;
 }
 
-.secondary-contacts{
-    color: rgb(16, 128, 181);
+.secondary-contacts {
+  color: rgb(16, 128, 181);
 }
 
-.contact-text{
-    padding-left: 20px;
+.contact-text {
+  padding-left: 20px;
+}
+
+.no-resize {
+  resize: none;
+}
+
+.no-text-spacing {
+  margin-top: 12rem;
+}
+
+.thanks-text-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rem;
+  margin-top: 8rem;
+}
+
+.thanks-text {
+  color: rgb(20, 172, 243);
 }
