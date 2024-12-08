@@ -20,6 +20,7 @@ export default class BoxesComponent {
   surveyConfig: any = {};
   texts = [];
   locationData: string = '';
+  phoneNumber = '541153450014';
 
   ngOnInit(): void {
     this.loadWorkshopData();
@@ -74,6 +75,11 @@ export default class BoxesComponent {
     const { lat, lng } = locationParseData.geometry.location;
     const googleMapsUrl = `https://www.google.com/maps?q=${lat},${lng}`;
     window.open(googleMapsUrl, '_blank');
+  }
+
+  openWhatsApp(): void {
+    const url = `https://wa.me/${this.phoneNumber}`;
+    window.open(url, '_blank');
   }
 
   submitFeedback(): void {
