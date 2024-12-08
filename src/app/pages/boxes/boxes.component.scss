@@ -52,6 +52,12 @@
   height: 23px;
   width: 23px;
 }
+.text-font {
+  font-family: cursive;
+  @media (max-width: 768px) {
+    font-size: smaller;
+  }
+}
 
 textarea::placeholder {
   color: #adb5bd;

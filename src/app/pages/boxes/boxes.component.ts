@@ -18,10 +18,10 @@ export default class BoxesComponent {
   feedback: string = '';
   workshop: any = {};
   surveyConfig: any = {};
-  texts = [];
+  texts:string[] = [];
   locationData: string = '';
-  phoneNumber = '541134675692';
-  showThanksMessage:boolean = false;
+  phoneNumber:string = '541134675692';
+  showThanksMessage: boolean = false;
 
   ngOnInit(): void {
     this.loadWorkshopData();
@@ -86,7 +86,12 @@ export default class BoxesComponent {
   submitFeedback(): void {
     console.log('Calificación:', this.rating);
     console.log('Comentarios:', this.feedback);
+    const feedbackData = {
+      calificacion: this.texts[this.rating],
+      comentarios: this.feedback,
+    };
+    localStorage.setItem('feedback', JSON.stringify(feedbackData));
     this.showThanksMessage = true;
-    alert('¡Gracias por tu feedback!');
+    
   }
 }
