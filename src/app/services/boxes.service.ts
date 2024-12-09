@@ -11,26 +11,16 @@ export class BoxesService {
     'https://dev.tecnomcrm.com/api/v1/places/workshops';
   private readonly API_URL_SURVEY =
     'https://dev.tecnomcrm.com/api/v1/boxes/config/encuestas';
-  private readonly AUTH_HEADER =
-    'Basic ' + btoa('max@tecnom.com.ar' + ':' + 'b0x3sApp');
-  private http = inject(HttpClient);
 
-  private getHeaders(): HttpHeaders {
-    return new HttpHeaders({
-      Authorization: this.AUTH_HEADER,
-      'Content-Type': 'application/json',
-    });
-  }
+  private http = inject(HttpClient);
 
   getFirstWorkshop(): Observable<any> {
     return this.http
-      .get<any[]>(this.API_URL_WORKSHOP, { headers: this.getHeaders() })
+      .get<any[]>(this.API_URL_WORKSHOP)
       .pipe(map((workshops) => workshops[0]));
   }
 
   getSurveyConfig(): Observable<any> {
-    return this.http.get<any>(this.API_URL_SURVEY, {
-      headers: this.getHeaders(),
-    });
+    return this.http.get<any>(this.API_URL_SURVEY);
   }
 }
