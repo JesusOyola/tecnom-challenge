@@ -27,9 +27,12 @@ export default class BoxesComponent {
   showThanksMessage: boolean = false;
   showInitialTexts:boolean = true;
 
-  ngOnInit(): void {
+  constructor(){
     this.loadWorkshopData();
     this.loadSurveyConfig();
+  }
+  ngOnInit(): void {
+    
   }
 
   loadWorkshopData(): void {
