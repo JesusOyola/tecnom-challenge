@@ -4,16 +4,18 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BoxesService } from '../../services/boxes.service';
 import { SurveyConfig, Workshop } from '../interface/workshop-interface';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-boxes',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule, HttpClientModule,RouterModule],
   templateUrl: './boxes.component.html',
   styleUrl: './boxes.component.scss',
 })
 export default class BoxesComponent {
   boxesService = inject(BoxesService);
+  router = inject(Router);
   firstWorkshop: any;
   rating: number = 0;
   feedback: string = '';
@@ -23,6 +25,7 @@ export default class BoxesComponent {
   locationData: string = '';
   phoneNumber: string = '541134675692';
   showThanksMessage: boolean = false;
+  showInitialTexts:boolean = true;
 
   ngOnInit(): void {
     this.loadWorkshopData();
@@ -69,6 +72,7 @@ export default class BoxesComponent {
 
   setRating(value: number): void {
     this.rating = value;
+    this.showInitialTexts = false;
   }
 
   openGoogleMaps(): void {
@@ -81,6 +85,10 @@ export default class BoxesComponent {
   openWhatsApp(): void {
     const url = `https://wa.me/${this.phoneNumber}`;
     window.open(url, '_blank');
+  }
+
+  resetParams(){
+    window.location.reload();
   }
 
   submitFeedback(): void {

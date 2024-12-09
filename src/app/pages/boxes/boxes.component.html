@@ -9,7 +9,7 @@
     <h4 class="thanks-text">
       ¡Gracias por compartir sus comentarios con nosotros!
     </h4>
-    <a class="mt-5" href="/boxes">Volver a calificarnos</a>
+    <a class="mt-5" (click)="resetParams()">Volver a calificarnos</a>
   </div>
   } @if(!showThanksMessage){
 
@@ -35,7 +35,7 @@
       >
         1
       </button>
-      @if(rating === 1){
+      @if(rating === 1 || showInitialTexts){
       <div  class="text-muted text-font mt-2">{{ texts[0] }}</div>
       }
     </div>
@@ -103,7 +103,7 @@
       >
         5
       </button>
-      @if(rating === 5){
+      @if(rating === 5 || showInitialTexts){
       <div  class="text-muted text-font mt-2">{{ texts[4] }}</div>
       }
     </div>
