@@ -9,7 +9,7 @@ import { Router, RouterModule } from '@angular/router';
 @Component({
   selector: 'app-boxes',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule,RouterModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
   templateUrl: './boxes.component.html',
   styleUrl: './boxes.component.scss',
 })
@@ -25,14 +25,11 @@ export default class BoxesComponent {
   locationData: string = '';
   phoneNumber: string = '541134675692';
   showThanksMessage: boolean = false;
-  showInitialTexts:boolean = true;
+  showInitialTexts: boolean = true;
 
-  constructor(){
+  constructor() {
     this.loadWorkshopData();
     this.loadSurveyConfig();
-  }
-  ngOnInit(): void {
-    
   }
 
   loadWorkshopData(): void {
@@ -40,7 +37,6 @@ export default class BoxesComponent {
       (data) => {
         this.workshop = data;
         this.locationData = data.address;
-        console.log('Taller:', this.workshop);
       },
       (error) => {
         console.error('Error al cargar el taller:', error);
@@ -53,8 +49,6 @@ export default class BoxesComponent {
       (data) => {
         this.surveyConfig = data;
         this.ratingText(data.mapping);
-
-        console.log('Configuración de encuesta:', this.surveyConfig);
       },
       (error) => {
         console.error(
@@ -90,7 +84,7 @@ export default class BoxesComponent {
     window.open(url, '_blank');
   }
 
-  resetParams(){
+  resetParams() {
     window.location.reload();
   }
 
