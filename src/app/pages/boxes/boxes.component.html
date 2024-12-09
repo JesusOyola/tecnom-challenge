@@ -3,7 +3,7 @@
     <h6 class="text-muted">{{ workshop.name }}</h6>
     <div class="header-line mx-auto"></div>
   </div>
-
+<!-- Thanks Message  -->
   @if(showThanksMessage){
   <div class="thanks-text-container">
     <h4 class="thanks-text">
@@ -21,6 +21,7 @@
     <h5>{{ surveyConfig.pregunta }}</h5>
   </div>
 
+  <!-- Rating Buttons  -->
   <div class="d-flex justify-content-center mb-3 gap-4">
     <div class="text-center rate-container">
       <button
@@ -108,6 +109,7 @@
     </div>
   </div>
 
+  <!-- Experience Comments  -->
   <div [ngClass]="{ 'mb-4': rating !== 0, 'no-text-spacing': rating == 0 }">
     @if(rating !== 0){
     <textarea
@@ -133,6 +135,7 @@
   </div>
   }
 
+  <!-- General Info -->
   <div class="text-center">
     <h6 class="mb-1">{{ workshop.name }}</h6>
     <p class="text-muted">{{ workshop.formatted_address }}</p>

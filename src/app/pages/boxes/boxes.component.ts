@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { BoxesService } from '../../services/boxes.service';
 import { HttpClientModule } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BoxesService } from '../../services/boxes.service';
+import { SurveyConfig, Workshop } from '../interface/workshop-interface';
 
 @Component({
   selector: 'app-boxes',
@@ -16,11 +17,11 @@ export default class BoxesComponent {
   firstWorkshop: any;
   rating: number = 0;
   feedback: string = '';
-  workshop: any = {};
-  surveyConfig: any = {};
-  texts:string[] = [];
+  workshop: Workshop | any = {};
+  surveyConfig: SurveyConfig | any = {};
+  texts: string[] = [];
   locationData: string = '';
-  phoneNumber:string = '541134675692';
+  phoneNumber: string = '541134675692';
   showThanksMessage: boolean = false;
 
   ngOnInit(): void {
@@ -61,7 +62,6 @@ export default class BoxesComponent {
   ratingText(scoresObject: any): void {
     if (scoresObject && typeof scoresObject === 'object') {
       this.texts = Object.values(scoresObject);
-      //console.log('Texts cargados:', this.texts);
     } else {
       console.error('El objeto de puntajes no es válido:', scoresObject);
     }
@@ -84,14 +84,11 @@ export default class BoxesComponent {
   }
 
   submitFeedback(): void {
-    console.log('Calificación:', this.rating);
-    console.log('Comentarios:', this.feedback);
     const feedbackData = {
       calificacion: this.texts[this.rating],
       comentarios: this.feedback,
     };
     localStorage.setItem('feedback', JSON.stringify(feedbackData));
     this.showThanksMessage = true;
-    
   }
 }
